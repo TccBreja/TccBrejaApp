@@ -3,4 +3,14 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_menu_padrao">MenuPadraoActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="content_menu_padrao_txt1">Fala Brother !</string>
+    <string name="content_menu_padrao_txt2">O que você esta procurando ?</string>
+    <string name="content_menu_padrao_txt3">O que você pretende ?</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

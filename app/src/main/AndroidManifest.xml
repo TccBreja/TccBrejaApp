@@ -19,6 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MenuPadraoActivity"
+            android:label="@string/title_activity_menu_padrao"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListaEstabelecimentoActivity" />
+        <activity android:name=".EstabelecimentoActivity" />
+        <activity android:name=".CervejaActivity"></activity>
     </application>
 
 </manifest>
