@@ -12,5 +12,12 @@
     <string name="content_menu_padrao_txt2">O que você esta procurando ?</string>
     <string name="content_menu_padrao_txt3">O que você pretende ?</string>
 
+    <string name="ondeEncontrar">Onde Encontrar</string>
+    <string name="descricao">Descricão</string>
+
+    <string name="informacoes">Descricão</string>
+    <string name="brejas">Brejas da Casa</string>
+
+
     <string name="action_settings">Settings</string>
 </resources>

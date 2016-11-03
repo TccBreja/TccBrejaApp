@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import app.youbeer.com.br.appbreja.R;
 import app.youbeer.com.br.modelo.Cerveja;
+import app.youbeer.com.br.modelo.Estabelecimento;
 
 /**
  * Created by Ribolli on 12/10/2016.
@@ -57,8 +59,20 @@ public class CervejaEstabelecimentoAdapter extends BaseAdapter{
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
         campoNome.setText(cerveja.getNomeCerveja());
 
-        //TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
-        //campoTelefone.setText(estabelecimento.getTelefone());
+        ImageView campoFoto = (ImageView)  view.findViewById(R.id.item_foto);
+        campoFoto.setImageBitmap(null);
+
+        TextView itemMl = (TextView)  view.findViewById(R.id.item_ml);
+        itemMl.setText(cerveja.getVolumeLiquido() + " ml");
+
+        TextView itemValor = (TextView)  view.findViewById(R.id.item_valor);
+        itemValor.setText(cerveja.getValor() + " / L");
+
+        TextView valorMaximo = (TextView)  view.findViewById(R.id.valorMaximo);
+        valorMaximo.setText("R$ "+ cerveja.getValorMaximo());
+
+        TextView valorMinimo = (TextView)  view.findViewById(R.id.valorMinimo);
+        valorMinimo.setText("R$ "+ cerveja.getValorMinimo());
 
         return view;
     }

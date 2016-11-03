@@ -33,6 +33,38 @@ public class Cerveja implements Serializable {
 	/** Valor de venda da cerveja */
 	private String valor;
 
+	/** Foto da cerveja */
+	private String foto;
+
+    /** Valor minimo da cerveja */
+    private String valorMinimo;
+
+    /** Valor maximo da cerveja */
+    private String valorMaximo;
+
+    public String getValorMaximo() {
+        return valorMaximo;
+    }
+
+    public void setValorMaximo(String valorMaximo) {
+        this.valorMaximo = valorMaximo;
+    }
+
+    public String getValorMinimo() {
+        return valorMinimo;
+    }
+
+    public void setValorMinimo(String valorMinimo) {
+        this.valorMinimo = valorMinimo;
+    }
+	/** @return Retorno o atributo codigoCerveja */
+	public String getFoto() {
+		return foto;
+	}
+	/** @return Retorno o atributo codigoCerveja */
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	/** @return Retorno o atributo codigoCerveja */
 	public int getCodigoCerveja() {
 		return codigoCerveja;

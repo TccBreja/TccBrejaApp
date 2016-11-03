@@ -48,6 +48,14 @@ public class MenuPadraoActivity extends AppCompatActivity
             }
         });
 
+        ImageView imgCerveja = (ImageView) findViewById(R.id.imageViewCerveja);
+        imgCerveja.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intentPesquisaCerveja = new Intent(MenuPadraoActivity.this, ListaCervejaActivity.class);
+                startActivity(intentPesquisaCerveja);
+            }
+        });
+
     }
 
     @Override
