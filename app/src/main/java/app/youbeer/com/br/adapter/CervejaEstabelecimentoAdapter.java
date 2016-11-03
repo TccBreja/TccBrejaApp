@@ -11,7 +11,6 @@ import java.util.List;
 
 import app.youbeer.com.br.appbreja.R;
 import app.youbeer.com.br.modelo.Cerveja;
-import app.youbeer.com.br.modelo.Estabelecimento;
 
 /**
  * Created by Ribolli on 12/10/2016.
@@ -40,7 +39,7 @@ public class CervejaEstabelecimentoAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int i) {
-        return this.cervejas.get(i).getId();
+        return this.cervejas.get(i).getCodigoCerveja();
     }
 
     @Override
@@ -56,7 +55,7 @@ public class CervejaEstabelecimentoAdapter extends BaseAdapter{
         }
 
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
-        campoNome.setText(cerveja.getNome());
+        campoNome.setText(cerveja.getNomeCerveja());
 
         //TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
         //campoTelefone.setText(estabelecimento.getTelefone());

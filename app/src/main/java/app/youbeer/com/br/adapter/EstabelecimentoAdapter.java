@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import app.youbeer.com.br.appbreja.ListaEstabelecimentoActivity;
 import app.youbeer.com.br.appbreja.R;
 import app.youbeer.com.br.modelo.Estabelecimento;
 
@@ -39,7 +40,7 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int i) {
-        return this.estabelecimentos.get(i).getId();
+        return this.estabelecimentos.get(i).getCodigoEstabelecimento();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class EstabelecimentoAdapter extends BaseAdapter{
         }
 
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
-        campoNome.setText(estabelecimento.getNome());
+        campoNome.setText(estabelecimento.getNomeEstabelecimento());
 
         //TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
         //campoTelefone.setText(estabelecimento.getTelefone());

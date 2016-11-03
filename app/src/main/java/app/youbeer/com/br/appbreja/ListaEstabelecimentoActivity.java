@@ -1,30 +1,39 @@
 package app.youbeer.com.br.appbreja;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.youbeer.com.br.adapter.EstabelecimentoAdapter;
+import app.youbeer.com.br.modelo.Cerveja;
 import app.youbeer.com.br.modelo.Estabelecimento;
+import app.youbeer.com.br.receiver.CervejaUtils;
+import app.youbeer.com.br.receiver.EstabelecimentoUtils;
 
 public class ListaEstabelecimentoActivity extends AppCompatActivity {
 
     private ListView listaEstabelecimento;
+    private ProgressDialog load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_estabelecimento);
+
+        // Faz o download das informações do servidor
+        GetJson download = new GetJson();
+        download.execute();
+
         listaEstabelecimento = (ListView) findViewById(R.id.lista_estabelecimentos);
-        carregaLista();
 
         listaEstabelecimento.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -47,8 +56,6 @@ public class ListaEstabelecimentoActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
     protected void onResume(Bundle savedInstanceState) {
@@ -56,28 +63,36 @@ public class ListaEstabelecimentoActivity extends AppCompatActivity {
     }
 
     //Metodo que carrega a lista de estabelecimentos
-    private void carregaLista(){
-
-        List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
-
-        Estabelecimento estabelecimento1 = new Estabelecimento();
-        estabelecimento1.setNome("Nome do Estabelecimento 1");
-        estabelecimento1.setEndereco("teste 1");
-        estabelecimento1.setTelefone("1111111");
-        estabelecimento1.setId(1L);
-
-        Estabelecimento estabelecimento2 = new Estabelecimento();
-        estabelecimento2.setNome("Nome do Estabelecimento 2");
-        estabelecimento2.setEndereco("teste 2");
-        estabelecimento2.setTelefone("22222");
-        estabelecimento2.setId(2L);
-
-        estabelecimentos.add(estabelecimento1);
-        estabelecimentos.add(estabelecimento2);
-
+    private void carregaLista(List<Estabelecimento> estabelecimentos){
 
         EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this, estabelecimentos);
 
         listaEstabelecimento.setAdapter(adapter);
+
+    }
+
+    private class GetJson extends AsyncTask<Void, Void, List<Estabelecimento>> {
+
+        @Override
+        protected void onPreExecute(){
+            load = ProgressDialog.show(ListaEstabelecimentoActivity.this, "Por favor Aguarde ...", "Recuperando Informações do Servidor...");
+        }
+
+        @Override
+        protected List<Estabelecimento> doInBackground(Void... params) {
+            EstabelecimentoUtils util = new EstabelecimentoUtils();
+
+            return util.getInformacao("http://192.168.0.11:8080/WebServerRestful/webserver/listarTodosEstabelecimentos");
+        }
+
+        @Override
+        protected void onPostExecute(List<Estabelecimento> estabelecimentos ){
+
+
+            carregaLista(estabelecimentos);
+
+
+            load.dismiss();
+        }
     }
 }
